@@ -1,4 +1,13 @@
+# Log files
 *.log
-*.retry
-*-artifact-*.json
 ansible-navigator.log
+
+# Ansible retry files
+*.retry
+
+# ansible-navigator artifact files
+*-artifact-*.json
+
+# Private SSH keys
+*.pem
+id_rsa
