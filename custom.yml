@@ -1,0 +1,33 @@
+---
+- name: Configure custom Apache web server for dev group
+  hosts: dev
+  become: true
+  tasks:
+
+    - name: Install Apache
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+
+    - name: Create custom document root
+      ansible.builtin.file:
+        path: /webdev
+        state: directory
+
+    - name: Create symlink to default web root
+      ansible.builtin.file:
+        src: /webdev
+        dest: /var/www/html
+        state: link
+        force: true
+
+    - name: Create index page
+      ansible.builtin.copy:
+        dest: /webdev/index.html
+        content: "development\n"
+
+    - name: Start and enable Apache
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: true

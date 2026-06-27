@@ -1,0 +1,6 @@
+---
+- name: Configure Apache using role
+  hosts: test
+  become: true
+  roles:
+    - myrole

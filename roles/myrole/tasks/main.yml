@@ -1,0 +1,16 @@
+---
+- name: Install Apache (httpd)
+  ansible.builtin.dnf:
+    name: httpd
+    state: present
+
+- name: Start and enable Apache
+  ansible.builtin.service:
+    name: httpd
+    state: started
+    enabled: true
+
+- name: Deploy index page
+  ansible.builtin.template:
+    src: index.j2
+    dest: /var/www/html/index.html

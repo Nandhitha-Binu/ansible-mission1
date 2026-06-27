@@ -1,0 +1,18 @@
+---
+- name: Configure issue file for dev group
+  hosts: dev
+  become: true
+  tasks:
+    - name: Set issue for dev
+      ansible.builtin.copy:
+        dest: /etc/issue
+        content: "development\n"
+
+- name: Configure issue file for test group
+  hosts: test
+  become: true
+  tasks:
+    - name: Set issue for test
+      ansible.builtin.copy:
+        dest: /etc/issue
+        content: "test\n"
