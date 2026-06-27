@@ -5,6 +5,9 @@ ansible-navigator:
     image: ghcr.io/ansible/creator-ee:v0.22.0
     pull:
       policy: missing
+    volume-mounts:
+      - src: /home/devops/.ssh
+        dest: /home/devops/.ssh
   ansible:
     config:
       path: /home/devops/ansible/ansible.cfg
